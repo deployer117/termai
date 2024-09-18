@@ -32,6 +32,15 @@ func LoadConfigPath(fpath string) (*Configuration, error) {
 		return nil, err
 	}
 
+	for i := range conf.Models {
+		if conf.Models[i].APIKey == "" && conf.Models[i].APIKeyEnv != "" {
+			conf.Models[i].APIKey = os.Getenv(conf.Models[i].APIKeyEnv)
+		}
+		if conf.Models[i].BaseURL == "" && conf.Models[i].BaseURLEnv != "" {
+			conf.Models[i].BaseURL = os.Getenv(conf.Models[i].BaseURLEnv)
+		}
+	}
+
 	return &conf, nil
 }
 

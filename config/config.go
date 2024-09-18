@@ -38,6 +38,8 @@ type Model struct {
 	BaseURL     string   `json:"base_url"`
 	Inactive    bool     `json:"inactive"`
 	Default     bool     `json:"default"`
+	APIKeyEnv   string   `json:"api_key_env"`
+	BaseURLEnv  string   `json:"base_url_env"`
 }
 
 type Prompt struct {
